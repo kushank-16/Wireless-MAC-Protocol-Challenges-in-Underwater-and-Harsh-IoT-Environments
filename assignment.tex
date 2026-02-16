@@ -1,0 +1,417 @@
+\documentclass[12pt]{article}
+
+% --------------------
+% Basic Packages
+% --------------------
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\onehalfspacing
+
+% --------------------
+% Title and Author
+% --------------------
+\title{Wireless MAC Protocol Challenges in
+Underwater and Harsh IoT Environments}
+\author{Kushank G A}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section{Introduction}
+The form of wireless communication has transformed the way distributed systems are being conducted and the devices can communicate with one another even when they are not physically connected to each other. The focal point of this communication technique is the Medium Access Control (MAC) layer that characterizes how diverse nodes are going to share a common wireless channel. In traditional land networks, MAC protocols are designed on the assumption of presence of a low propagation delay, radio channel stability and moderate interference. Such assumptions may be of help in enabling the carrier sensing and collision avoidance mechanisms to work effectively.
+
+Behind the scenes operating principles are however changing drastically as wireless technologies leave the realm of the traditional environment and enter underwater infrastructure and under-industrial infrastructure applications of the Internet of Things (IoT). Taking of water as a medium of communication relies very heavily on acoustic messages rather than radio frequency messages due to the high quantum of attenuation of the electromagnetic messages in water. High propagation delay, low bandwidth and severe signal distortion is brought about by acoustic communication. These characteristics are in themselves an issue to the design principles of the traditional MAC protocols.
+
+Similarly the extreme conditions of the IoT such as manufacturing plants, mines, oil plants and the sites vulnerable to disasters would be very demanding to operate. These conditions are usually characterized by high noise of electromagnetic interference, metallic shielding, dense implementations of devices and high degree of latencies requirements. Propagation delay is not that big of a problem as in the case of underwater systems but considering incidents of interference and scalability issues, MAC layer is a big challenge.
+
+It is in such extreme conditions that this literature survey will be trying to assess the behavior of MAC protocols and comparing the adaptations proposed by researchers. The study will discuss the common issues associated with looking underwater, extreme IoT conditions and also isolate technical requirements that are specific to design of protocols. These are important areas of knowledge that are crucial during designing efficient and reliable wireless communication systems in unconventional systems.
+	
+
+	\section{Background and Conceptual Foundations}
+	\subsection{Simple MAC application in Wireless Communication.}
+  The media access control layer in case of wireless communication deals with the share of communication among the different devices that share the same communication channel. Because of similarities of wireless signals, when two devices are using the same frequency and consequently, there are chances that their signals overlap causing a collision and corruption of information. The MAC layer attempts to avoid such occasion, therefore trying to control when and where devices can transmit.
+
+Under normal wireless systems such as Wi-Fi, MAC protocols utilize either the techniques of carrier sensing protocol or the time slot allocation protocol. Carrier sensing refers to a process through which a device will sense the channel prior to the transmission of the data. In case the channel is taken, the device will wait a couple of seconds. In the time scheduling systems like the TDMA, a given time slot is reserved to each device to transmit. Such are well applicable to situations where signals propagation is fast and delay is insignificant.
+
+However, the approaches are premised on certain assumptions. They assume that the signals may be transferred almost immediately and devices may be capable of responding to transmissions of other gadgets within a limited time. When these assumptions are not satisfied then the performance of the MAC protocols starts reducing.
+ \subsection{Underwater Communication Characteristics.}
+The maritime communication is quite different as compared to the one on the ground. Radio waves cannot work well through long distances in water. It is because of this reason that, acoustic waves are used instead. The speed of radio communication is higher than that of acoustic communication. It is about 1500 meters per second and this is a very slow speed as compared to speed of radio signals in air.
+
+This low rate gives massive delay in propagation. The distance between nodes that are a few kilometers can hardly be connected by a signal that can take several seconds to travel. During this time also another node can start transmitting provided there are no other channel users who have occupied the channel. This introduces the risk of the collision. Other techniques such as carrier sensing cannot be as reliable in the underwater.
+
+There is also a problem of limited bandwidth. The channels under water are likely to experience lower data rates. This means that small control packets take a longer period to transmit. Multipath propagation is caused in addition to that by the reflection at the surface and the sea bed in the case of the sub marine conditions. The reason behind these facts is that the rate of packet loss is increased and there may be an increment in the rate of retransmission.
+
+Another important component is vigor. Battery-powered underwater sensor nodes have many sensor nodes and does not readily lend itself to battery replacement. The reliability should not be neglected in MAC protocols also they should be energy efficient.
+
+\subsection{Character of Unkind IoT Conditions.}
+Unfriendly IoT environments deal with locations, including factories, mines, refineries and industrial power plants. In these environments, it has different types of disruptions in communication. There may be interference of electromagnetic by machines, metal structures that reflect signals, high temperature or vibration that interferes with devices.
+
+Other conditions that can result in a variation in signal strength are owing to obstacles and reflections. Though the distance of the propagation of the signals is not mediocre compared to underwater communication, interference and congestion are the cause of problem. The large number of IoT devices that need to communicate over a short time overloads the communication channel. This results in delays and collisions.
+
+Industrial IoT systems are typically sensitive to the communication and should be timely and reliable. To provide a good example, the sensors of the automation systems transmit data to real-time controllers. The system performance may be low or unstable in the event of slow communication with frequent packet loss.
+
+Under these severe IoT circumstances, MAC protocols must more be reliability, scaleability oriented and predictable delay.
+
+
+\subsection{Reason why Traditional MAC Protocols do not work under extreme conditions.}
+Traditional MAC protocols were mainly to be used in land radio. They assume the rate of signal propagation as high and the mean interference. Such protocols are ineffective in the direct application to the underwater or problematic, in terms of the IoT, conditions.
+
+The delay due to propagation of underwater networks is non-negligible hence mechanisms by hand shake cannot be effective. As an example, back and forth control packets can result in massive wastage of time by the RTS/CTS systems. This reduces throughput.
+
+Harsh IoT systems like contention based systems like CSMA may lead to multiple backoff and retransmission when a network is congested. This contributes to time and energy consumption. Time-based strictly protocols, on the other hand, require synchronization which in dynamic settings may not be a pleasant experience to implement.
+
+As a result of these inadequacies, researchers are inventing modified or even completely new MAC protocols that are unusual to such systems. The protocols seek to trade away the notions of delay, reliability, power consumption, and scale to environmental limitations.
+	
+
+	
+
+	\section{Core Concepts and Approaches}
+	\subsection{Contention-Based MAC Protocols in Underwater Networks}
+Contention-based MAC communication is one of the oldest methods applied in submarine wireless sensor networks. These protocols enable the nodes to contend access to channels. The principle is the same as in the terrestrial systems when nodes monitor the channel and send some message in case it is available. Nevertheless, there are profound modifications in the behavior of this mechanism in the underwater habitat.
+
+Carrier sensing is able to work in normal wireless systems because the propelled signals are very fast. One device can know when another device is transmitting or not at a blistering pace. But the speed of the acoustic signals is much less in underwater. Because of this fact, a node would be able to scan the channel and realize that it is free, but there is another message being transmitted. This constitutes what is often known as the hidden terminal problem. Its propagation is slow and therefore there is more chance that overlapping transmissions will exist and simple carrier-sensing techniques are less effective.
+
+Some underwater contention based protocols use short control tones as a substitute to full control packets in order to reduce collision. The idea behind such approach is that the shorter the signals, the less overhead and energy is spent. The nodes fail to send their long handshake packets and instead, they are vigilant by sending small signals to their partners to start transmitting. It is less consuming of energy, but cannot completely eliminate the problems to do with any delays.
+
+Another improvement is delay-aware scheduling. Within the framework of this method, nodes model the delay of propagation and time their transmissions based on this data. In spite of the fact that such strategy is superior to the simple systems that operate under the CSMA principle, overall throughput is limited as traffic level increases. Control signal overheads are a consideration in high node competition and channel time is wasted waiting.
+
+With a bandwidth that is already constrained, in any underwater system, network efficiency, at the MAC layer, directly impacts the network performance. Hence, contention-based techniques, despite being easy, can prove difficult when there are many loads or numerous nodes that make the network large.
+
+\subsection{Reservation-Based and Handshake-Oriented Protocols.}
+To solve the limitations of access with pure contention researchers established reservation-based mechanisms. These protocols are attempting to rescue the channel before it is transferred with actual packet of data. The most common are multistep procedures of handshaking such as Request-to-Send and Clear-to-Send.
+
+Propagation delay is a long delay that must be observed in underwater systems reservation-based protocols. Once a node sends a request packet, it must wait before receiving a response and this time may be of many seconds. This period is however not making good use of the channel. This reduces throughput although this reduces the chances of collision.
+
+Slotted hand shake protocols are an attempt to increase this with subdivisibility of time into slots. The unpredictable collisions are minimized by the system which ensures that the transmission of the control packets occurs at the set frequencies. However, when a few nodes desire to have access to the channel in the same slot, the collisions do occur and the nodes have to repeate it, without the need to reschedule their restermination.
+
+Further developed reservation-based protocols make an effort to reduce the proportion of time that control signaling occupies. They do not make use of the channel to allocate a single set of transmissions but by allowing such a multiplicity of nodes to make structured series of transmissions. When the hand shake round is successful, no more control change is issued and some no further data packets are issued immediately after that. This reduces over heads and gives the most use of channels.
+
+In as much as, reservation-based mechanisms are more reliable than pure contention schemes in terms of reliability, they do not have; fast-propagation of signals and data rate. Hand shake overhead may be the norm in heavy underwater operations.
+\subsection{Scheduled and TDMA-Based Solutions.}
+Individual data gathering Time Division Multiple Access mechanisms are considered to be more suitable in underwater networks in this instance. Both nodes in TDMA systems even have the time slot allocated to each node. This avoids collisions in the event that the schedule is maintained in an orderly way.
+
+On water communication however poses the problem of synchronization. Traditional TDMA The nodes in traditional TDMA have a common clock. Clock drift and propagation delay can also cause slot misalignment making underwater synchronization not a simple task. A minor lack of timeliness can lead to overlapping packets and this is the very last thing that scheduling is associated with.
+
+To cope with this, some protocols do not rely on the precise concurrentness of time but impose transmission delays. Instead of making the nodes to have a global time point, the central node time is used to measure the propagation delays and the time is applied in the allocation of that specific awaiting time to all sensors when they receive a request. This ensures that the packets reach the receiver in the orderly manner and without collision.
+
+Contention-based schemes do not even usually provide foreseeable delay and throughput as planned schemes. They are especially very effective in networks where data is periodically transferred and the traffic modes are fixed. They are however not as elastic where the demand of traffic change randomly. The schedule must be recalculated in the event of either new nodes addition or bursty traffic and this makes it complicated.
+
+Under water monitoring systems such as seismics data collection system or environment sensor systems are often done using TDMA-based systems since data reporting is periodic and predictable.
+
+\subsection{Hybrid and adaptive MAC Mechanisms.}
+As the studies were developed, it turned out that none of the methods can be applied in the extreme conditions in general. This witnessed the development of hybrid MAC mechanisms that is a combination of different strategies.
+
+Where contention mode is desired during low traffic of a network and scheduled mode is desired when the network load is high systems can make use of hybrid MAC protocols. This provides the flexibility and efficiency to the system. The flexibility in a submerged environment can reduce the control cost in sparse communication context as well as render it stable in dense context.
+
+Unfriendly IoT are also characterized by the existence of hybrid mechanisms. Occasionally, time-slotted access has been used in conjunction with frequency hopping in industrial wireless net works. The approach has minimal effects of interference and it increases reliability. This way, when noise has been detected at a given frequency channel, communication is transmitted at a different frequency channel, in the next time slot.
+
+The adaptive MACs also have the ability to monitor the situation in the channels and adjust transmitter parameters dynamically. An example is that as the loss of packets increases, the protocol may change to low rate of transmission or make efforts to increase the guard-timelines. Adaptive behavior improves stability in the industrial environment in which interference effect may vary according to the repetition of machine processes.
+
+The idea of hybrid and adaptive solutions is an ingredient to keep in mind: the conditions of the environment could not be deemed stable. MAC protocols were not meant to be used according to what was thought but rather react to the changes.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{mac_classification.png}
+    \caption{Classification of MAC Protocol Approaches in Underwater and Harsh IoT Environments (Source: Author's illustration)}
+    \label{fig:mac_classification}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\caption{Summary of MAC Protocol Categories in Extreme Environments}
+\label{tab:mac_types}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Protocol Type} & \textbf{Main Feature} & \textbf{Strength} & \textbf{Limitation} \\
+\hline
+Contention-Based & Channel sensing and backoff & Flexible and simple & High collision under load \\
+\hline
+Reservation-Based & RTS/CTS handshake & Reduced data collision & High control overhead \\
+\hline
+Scheduled (TDMA) & Fixed time slots & Collision-free access & Synchronization complexity \\
+\hline
+Hybrid/Adaptive & Combined mechanisms & Balanced performance & Higher design complexity \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+	\section{Comparative Discussion}	
+    \subsection{Propagation Delay vs. Interference as Primary Constraints}
+
+When comparing underwater networks and harsh IoT environments, the most fundamental distinction lies in the physical phenomena that limit communication performance. In underwater networks, the dominant constraint is propagation delay caused by the slow speed of acoustic signals. In industrial IoT environments, the main limitation is interference and signal obstruction rather than delay.
+
+Underwater acoustic signals travel at approximately 1500 meters per second, which is significantly slower than electromagnetic waves in air. While this may not seem critical at short distances, over hundreds or thousands of meters the delay becomes substantial. This delay directly impacts MAC coordination mechanisms. Carrier sensing becomes unreliable because a node cannot instantly detect whether another node has begun transmission. Even simple two-way handshakes may require noticeable waiting time. The longer the distance, the greater the delay accumulation.
+
+In contrast, industrial IoT networks operate using radio frequency communication where signal propagation is nearly instantaneous relative to network timing requirements. However, these environments are filled with heavy machinery, metallic structures, and electromagnetic disturbances. Signal reflections create multipath fading, while machine-generated noise produces intermittent interference spikes. Unlike underwater systems where delay dominates, industrial networks must manage unstable signal quality.
+
+This distinction affects protocol design philosophy. Underwater MAC protocols must reduce dependency on real-time channel sensing and minimize excessive handshakes. Guard times and delay compensation become essential. In industrial IoT, MAC protocols must prioritize interference detection, channel hopping, and reliable retransmission strategies.
+
+Although both environments are considered extreme, the core constraint is different. One environment is delay-sensitive, while the other is interference-sensitive. Recognizing this difference is essential before selecting or designing an appropriate MAC scheme.
+\subsection{Throughput Efficiency and Channel Utilization}
+
+Throughput efficiency behaves differently in underwater and industrial IoT systems because the limiting factors differ. In underwater communication, bandwidth is inherently limited. Acoustic channels provide relatively low data rates compared to terrestrial radio systems. Therefore, every transmitted bit occupies valuable channel time.
+
+Reservation-based MAC schemes in underwater networks reduce collisions but introduce control overhead. When multiple control packets are exchanged before data transmission, the effective throughput decreases. The trade-off becomes clear: reducing collision probability increases control signaling, but increasing control signaling reduces channel utilization efficiency.
+
+To improve efficiency, some protocols aggregate multiple data packets in one transmission session after successful reservation. This reduces the proportion of time spent in control exchange. However, aggregation may increase delay if nodes must wait longer to accumulate data.
+
+In industrial IoT networks, bandwidth may be higher, but effective throughput is often limited by congestion and retransmissions. When many devices transmit simultaneously, contention increases. Backoff mechanisms may cause repeated waiting periods, reducing effective throughput even if raw bandwidth is sufficient.
+
+Another throughput consideration involves fairness and priority. Industrial systems may carry mixed traffic types, including routine monitoring data and safety-critical alerts. MAC protocols must allocate channel resources carefully to prevent lower-priority data from overwhelming urgent traffic.
+
+In underwater networks, fairness concerns may be simpler because node density is lower. However, geographic distance may cause certain nodes to experience higher propagation delay, indirectly reducing their throughput.
+
+Thus, throughput optimization strategies differ across environments. Underwater systems focus on reducing control overhead relative to low bandwidth. Industrial systems focus on congestion management and interference mitigation.
+
+\subsection{Energy Efficiency Considerations}
+
+Energy efficiency is critical in both underwater and harsh IoT environments, but the context differs. Underwater sensor nodes are often deployed in remote locations where physical maintenance is expensive and sometimes impossible. As a result, energy conservation directly determines network lifetime.
+
+Acoustic transmission consumes considerable power. In addition, long propagation delays increase idle listening time. If nodes remain active while waiting for acknowledgments, battery drain accelerates. Therefore, underwater MAC protocols frequently incorporate sleep scheduling and duty cycling mechanisms. Nodes wake up only during assigned transmission windows, reducing unnecessary energy consumption.
+
+In industrial IoT environments, some devices are powered directly from electrical infrastructure, reducing strict battery limitations. However, many sensors are still battery-operated or rely on energy harvesting. Replacing batteries in large-scale deployments can be costly and time-consuming.
+
+Energy consumption in industrial IoT is strongly influenced by retransmission rates caused by interference. High packet loss due to noise forces repeated transmissions, increasing power usage. Channel hopping and interference-aware scheduling indirectly improve energy efficiency by reducing retransmission frequency.
+
+Another difference lies in operational expectations. Underwater networks are often designed for long-term scientific observation where moderate data rate is acceptable. Industrial IoT systems, on the other hand, may require higher responsiveness and reliability. In some cases, energy efficiency may be slightly compromised to guarantee timely delivery.
+
+Balancing energy, delay, and reliability remains a complex multi-objective problem in both environments.
+
+\subsection{Scalability and Network Density}
+
+Scalability issues differ significantly between underwater and industrial networks. Underwater networks typically involve fewer nodes spread across large geographic areas. Communication distances are long, and multi-hop routing may be required. Each hop introduces additional delay and potential packet loss.
+
+Centralized MAC scheduling in underwater networks becomes more complex as node count increases. The coordinator must assign slots while considering different propagation delays. As network size grows, slot calculation and synchronization management become more complicated.
+
+In industrial IoT deployments, node density is often high within confined spaces. Hundreds or thousands of devices may operate simultaneously. Contention-based MAC protocols struggle under such high density due to frequent collisions and backoff cycles.
+
+Scheduled access mechanisms improve stability but require efficient management of time slots. When new devices join the network, scheduling must be updated dynamically. Maintaining fairness among devices becomes challenging as system size increases.
+
+Topology stability also differs. Underwater networks may experience gradual topology changes due to water currents. Industrial IoT networks may experience rapid changes when devices are added, removed, or relocated.
+
+Scalability solutions must therefore be environment-specific. Underwater scalability focuses on managing distance and delay accumulation. Industrial scalability focuses on congestion control and fairness under high density.
+
+    \begin{figure}[h]
+    \centering
+    \includegraphics[height=0.5\textheight]{environment_comparison.png}
+    \caption{Comparison of MAC Challenges in Underwater and Harsh IoT Environments (Source: Author's illustration)}
+    \label{fig:env_comparison}
+\end{figure}
+
+
+\begin{table}[h]
+\centering
+\caption{Comparative Analysis of MAC Design Factors}
+\label{tab:comparison}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Parameter} & \textbf{Underwater Networks} & \textbf{Harsh IoT Networks} \\
+\hline
+Communication Medium & Acoustic & Radio Frequency \\
+\hline
+Dominant Constraint & High Propagation Delay & Interference and Congestion \\
+\hline
+Bandwidth Availability & Limited & Moderate \\
+\hline
+Node Density & Low to Moderate & High \\
+\hline
+Energy Limitation & Severe & Moderate to Severe \\
+\hline
+Synchronization Complexity & High & Moderate \\
+\hline
+Scalability Challenge & Distance and Delay & Congestion and Fairness \\
+\hline
+\end{tabular}
+\end{table}
+
+
+	\section{Practical Insights and Use Cases}
+	\subsection{Underwater Environmental Monitoring Systems}
+Underwater environmental monitoring systems represent one of the most common real-world applications of underwater wireless sensor networks. These systems are typically deployed for observing oceanographic parameters such as temperature, salinity, dissolved oxygen levels, pollution concentration, and biological activity. In many cases, sensor nodes are installed on the seabed or attached to anchored structures and are expected to operate autonomously for long durations without maintenance. Because of this long-
+term deployment requirement, MAC protocol design must emphasize stability, energy efficiency, and predictable communication behavior.
+
+In contrast to laboratory conditions in the laboratory, those in the sea are very dynamic. The currents produced by water can slightly move the nodes regardless of the fact that they are anchored. Surface waves also provide further changes in the behavior of acoustic signals propagation. The salinity differences and temperature differences can affect acoustic speed, which indirectly impacts on the propagation delay. 
+
+The following changes to the environment complicate keeping fully synchronized time-slot-based systems. Consequently, MAC protocols have to incorporate tolerance, i.e. guard intervals to avoid timing shift-related collisions.
+
+The other useful practical factor is periodic traffic patterns. Monitoring systems in the environment normally work on the predetermined reporting intervals. As an illustration, a temperature sensor can send out data after every five minutes. The MAC schemes based on TDMA are also appropriate since the patterns of traffic can be foreseen. Consistent transmission ensures less contention and unnecessary retransmission is minimised. Nevertheless, periodical traffic makes it easier to schedule; however, unexpected incidents are not eradicated. All these changes in the environment may create bursts of data like landslides under water or storm related disturbances. MAC protocols should consequently have the ability to accommodate the bursts of traffic without collapsing.
+
+Underwater monitoring is also one of the applications where energy management is of paramount importance. The Radio communication is very inefficient when compared to acoustic transmission. Idleness in listening, resending, and over-control signalling means that less battery life has been achieved. Practically, sleep scheduling is frequently coupled with centralized coordination in underwater MAC protocols. When not on the schedule, nodes are left in the low-power state. The key coordinator consolidates the data and has the opportunity to manage reporting times to maximize power utilization. The field experience in practice indicates that reliability can be more advantageous as compared to high throughput in environmental monitoring. The loss of the occasional data packet is not a serious concern in the analysis of the long-term trends, irregularly occurring communication failures diminish trust towards the functioning of the system. Hence, the object of MAC protocols in these systems is to offer steady and predictable communication instead of achieving the highest data maximum speed.
+
+
+
+\subsection{Seismic Monitoring and Oil Exploration}
+
+The other area involving underwater applications is seismic monitoring and offshore exploration. Such systems involve the use of huge networks of submersible sensors to monitor large geographical areas in order to monitor the vibrations of the ground, tectonic styles or signals of oil deposits. Seismic systems could need more multi-node and synchronized data collection rates and higher sampling rates than environmental monitoring. Another difficulty of seismic application is supporting bursty traffic. At normal times sensors can transmit minimal data regarding the background. Nevertheless, numerous sensors sense at once in case of seismic activity. Simple MAC schemes can be overwhelmed by this immediate increase in the traffic. In case two or more nodes are trying to send messages simultaneously, there is a high probability of collisions. In this case, reservation based MAC protocols are usually preferred since they minimize the data packet collisions. Nevertheless, the hand shake overhead, brought about by the reservation mechanisms, can augment latency at the critical periods. Timely delivery of data is a consideration in the seismic detection in that coordinated analysis among several nodes is relying on synchronized data. 
+
+Geographic distribution is another problem. The arrays of seismic sensor can be designed to have long distances, which produces different propagation times between nodes and central collectors. These differences have to be taken into consideration in MAC scheduling. The same time slots would be allocated without taking into account the variation in propagation and this will lead to a possible overlap between the arrivals at the receiver. It also depends on energy consumption. Seismic sensors could be used on long term observation of distant underwater areas. Burst transmissions are infrequent; however, the matter of lifetime requirements is rather rigid. MAC protocols should thus be in a position to enable low-power operation of the system when idle, as well as providing responsiveness to the transmission of sudden events.
+
+During normal operation, scheduled access ensures efficiency. During detected events, adaptive priority-based transmission can allow urgent data to bypass normal scheduling rules.
+
+
+\subsection{Industrial Automation and Smart Manufacturing}
+The automation of industrial facilities is one of the large volumes of put-up harsh IoT. Contemporary factories are also heavily dependent on wireless communications to watch factory lines, machine health, safety of green environment and power consumption. The industrial environment is usually crowded and space-constrained unlike the underwater system. It is possible to have hundreds of devices operating within a relatively small space. Operational ability and productivity depend on the reliability of communication in such environments. As an illustration, critical machines could have sensors that check the level of pressure or temperature. A delay on a packet because of congestion on a channel does not ensure a timely response of the control system. As such, MAC protocols should offer deterministic or near deterministic latency.
+
+Heavy electromagnetic interference is also brought about by industrial settings. Welding machines, motor, and power converters create noises that are intermittently able to cut off wireless communication. Christensen, and Basinger 325: MAC protocols based wholly on contention based access mechanisms can exhibit repeated retransmissions in such conditions of interference. This is not only adding delay but energy goes to waste.
+
+Channel hopping with time slotting has become a viable option in most industrial systems. The system decreases the effects of sustained interference by incorporating planned relay with frequency diversity. When there is a high noise on one of the frequency channels, the next time slot is used to communicate at another frequency. The other important issue is scalability. With the more automation of factories, the number of IoT devices also goes up. MAC protocols should be able to add new devices dynamically without degrading the performance considerably. The channel allocation mechanism should be fair so that low priority devices do not experience permanent delays.
+
+Considerations of maintenance are also identified during practical deployment. The systems in industries might be 24/7. MAC protocols should be long-range working without the need to be manually adjusted. Long-term stability is enhanced by adaptive mechanisms that increase or decrease the retransmission limits or time slot assignments depending on the measured network performance.
+
+
+\subsection{Emergency and Disaster Response Scenarios}
+Emergency and disaster scenarios represent a different category of extreme environment use cases. These scenarios may include underwater rescue missions, post-accident industrial inspections, or rapid deployment of temporary wireless networks in hazardous zones. Unlike structured monitoring systems, these deployments are often unplanned and must operate under unpredictable conditions. In emergency situations, network topology may change frequently. Underwater robots may move dynamically, and industrial rescue teams may deploy portable IoT devices. Strict TDMA scheduling may not adapt quickly to such topology changes. Flexible and adaptive MAC schemes are therefore more suitable.
+
+The fact of energy limitation is even more important during emergency deployments. There may be limited battery power, and the gadgets might not be able to be recharged during operations. MAC protocols should keep the unneeded communications to the minimal as well as delivering essential messages reliably.
+
+Priority-driven transmission is exceptionally significant in mission critical cases. Coordination signals and warnings about safety issues should be sent anyway in real time despite the channel use. Response time can be improved by using hybrid MAC schemes where the high-priority packets interrupt normal traffic.
+
+Experienced lessons on such deployments have shown that simplicity can be very useful in terms of reliability. Very intricate scheduling schemes are not very reliable in the event that network conditions alter abruptly. The strength and flexibility go a long way than theoretical throughput optimization.
+
+
+
+	\section{Challenges and Open Issues}
+\subsection{Synchronization and Timing Uncertainty}
+One of the hardest challenges in the designing of under-water MAC is synchronization. Various effective MAC protocols particularly TDMA-based mechanisms rely on timing synchronization between nodes. In earth networks, synchronization can be quite simple since the delay due to signal propagation is ushered and synchronization messages exchange can be realised in a short time. Nevertheless, long and variable propagation delays are encountered due to underwater acoustic communication, and lead to complications in maintaining the synchronization.
+
+As two underwater nodes are spread over a long distance, the speed of signal traveling can take milliseconds and several seconds depending on the distance. It is a delay that should be well considered when allocating the transmission slots. When the estimations of the propagation delay are minor, there is a possibility of slot overlap at the receiver. Barely any form of misalignment may result in partial packet collision decreasing reliability.
+
+The other complication is caused through environmental dynamics. The currents of water may make the nodes shift a little bit off their initial locations. Even though this movement might be small on physical aspects, it alters the propagation delay. MAC protocols which are dependent on hard-coded delay estimates can progressively lose high accuracy as time elapses. Recomputation of delay often adds control overhead and it also consumes more energy.
+
+Another concern is the clock drift. Every electronic clock drastically varies over time with respect to reference clock. Periodic synchronization signals ensure that this drift is well corrected in terrestrial networks. Even in the case of underwater networks, there is long delay and possible loss of packet in synchronization messages themselves. Thus, it is difficult to keep time references of all the nodes constant.
+
+Whereas in industrial IoT set ups, the issue of synchronization is always less significant because of the propagation delay yet it is still susceptible to interference. Time-slot schedules can fail in case synch packet is distorted by electromagnetic noise. Overhead can be minimized by a more hierarchical synchronization structure when there are large deployment of industries.
+
+Although the research on the topic has been extensive, this does not mean that the creation of MAC protocols that are resistant to synchronization errors without a significant decrease in efficiency is an unsolved problem. The adaptive guard intervals or the synchronization-free scheduling mechanisms may be necessary in the future.
+
+
+
+\subsection{High Packet Loss and Dynamic Channel Conditions}
+
+Acoustic channels under water are not stable. Signal distortion is presented by multipath propagations due to reflections by the water surface and seabed. Communication is also affected by ambient noise due to marine life, ship traffic, and the environment. The loss rates of packets may vary considerably within a very short period.
+
+MAC protocol is seriously affected by high packet loss. Reliability must be achieved by the use of retransmission but retransmission adds delay and is energy consuming. When control packet is lost, the whole handshake process has to be re-initiating in reservation based MAC schemes. This forms overhead and decreases throughput.
+
+Further, the quality of channels underwater can be different based on depth and environmental factors. MAC protocols that work well in one deployment situation are not guaranteed to be good in another. Fixed configuration parameters, including constants backoff time or slot time may not be responsive to changing conditions.
+
+In hostile industrial IoT conditions, the main causes of packet loss are electromagnetic effects and signal blocking. Noise bursts may be produced by heavy machinery. Metallic nature can form deep fading and areas where the strength of the signals reduces greatly. Interference levels vary withswitched-on machines..
+
+MAC protocols in such settings should be able to support changing link quality. Hard retransmission thresholds can either consume energy, or they can be incapable of providing reliability. The mechanisms support adaptive retransmission control and dynamic channel hopping which tend to enhance the performance although it increases the complexity of the algorithms.
+
+One of the issues that have not been solved is how to design lightweight adaptive MAC mechanisms that can react promptly to channel variation without the need to spend a lot of time in computation and signaling overhead.
+
+\subsection{Scalability and Congestion Management}
+
+Scalability is more difficult to achieve with the increase of network size. When underwater networks are involved, there might not be a very high density of nodes yet geographical dispersion makes it difficult. Many hops can be needed to relay the information of a far-away node to a central collector node. Extra delay and possible packet loss are introduced with each hop.
+
+It complicates the coordination of MAC schedules in multiple hops. When independent scheduling is applied to each hop, end-to-end delay can build in an erratic manner. Centralized scheduling is easy to coordinate with but adds on overhead control and can be inefficient at large scale networks.
+
+The distance factor is supplanted with node density in an industrial IoT setting. There are hundreds or thousands of sensors that can be connected through the same communication media. Under this density, contention-based protocols can often collide. Backoff can increase exponentially with time, and latency can be huge.
+
+MAC Scheduled solutions enhance the quality of control over congestion yet demand a complicated slot management. The large the amount of nodes, the harder it becomes to be fair and starvation free. Certain nodes can incur multiple delaying times and others dominate a channel access.
+
+Dynamic scalability is another problem. New devices are added to industrial networks gradually. MAC protocols should also be able to add nodes dynamically without significant reconfiguration. To re-calculate global schedules whenever a node is added to the network is perhaps not practical.
+
+Thus, scalability is still considered a challenge in underwater systems as well as industrial systems. The issue of balancing efficiency, fairness among complexity at a large scale of deployment is a research question still in need of an answer.
+
+\subsection{Energy Constraints and Lifetime Optimization}
+
+One of the basic challenges is energy optimization particularly in underwater networks. There is more power used in acoustic transmission than in the radio transmission of the earth. Together with the huge propagation delay and possible retransmissions total energy usage can grow exponentially.
+
+Listening is also a major contributor of energy wastage. Nodes in contention based systems need to be animate to identify the availability of the channels. Waiting time is increased because of low propagation. Scheduling systems eliminate the idle time when one may be asleep yet this needs accurate timing to prevent losing transmission.
+
+Furthermore, the MAC protocols that are based on feedback also add new control messages. On the one hand, feedback enhances reliability, but on the other hand, it uses more energy. Designers should strike a good balance in frequency of feedback and saving of energy.
+
+The energy expenditure in the case of industrial internet of things is not critical when the devices used are wired but rather of concern when using sensors that are powered by batteries. There is further complexity of energy harvesting technologies. The available energy might be varied in several aspects according to the environmental conditions like the vibrations or brightness.
+
+MAC protocols are thus required to modify the transmission schedules when energy is available. Aggressive transmission can cause a high drain on batteries whereas, conservative transmission can make them less responsive.
+
+One of the issues still unanswered is how to come up with unified MAC mechanisms taking into account delay, reliability as well as energy without being excessively complex to compute.
+
+Intelligent scheduling is needed to optimize the long-term network lifetime, the duty is to cycle in real time, and even the routing layer with the MAC may need to be cross-layered.
+
+
+	
+
+	\section{Future Directions}
+	\subsection{Artificial Intelligence and Machine Learning in MAC Design}
+
+A combination of artificial intelligence and machine learning algorithms is one of the most promising further directions of MAC protocol design in extreme environments. In conventional MAC schemes, there are usually set parameters, like backoff or slot times or tolerance to retransmission, which are used in the design. As much as these parameters can be very suitable in some situations, they do not necessarily work best in situations where the environmental variables are variable.
+
+The conditions of the channels in underwater conditions may change because of the variation in temperature, the movement of water, and the external sources of noise. An MAC system based on machine learning would be able to identify the trend of packet loss, changes in propagation delay, and traffic load. According to the observed data, the system would be able to modify my transmission timing, guard intervals or retransmission strategies automatically. As an example, in case the rate of packet loss rises because of the interference in the environment, the protocol might temporarily widen the slot spacing, or minimize the number of simultaneous transmissions.
+
+Likewise, in industrial IoT, the patterns of interference may also be machine operation cycles based. The systems could be AI-based and able to learn periodical behavior during which to make interferences and also schedule the transmissions to low-noise periods. Predictive models could be used to dynamically respond to the presence of packet loss or they might be used proactively to change channel access decisions.
+
+But introducing machine learning in designing MAC is a problem. Most of the underwater and IoT devices are not powerful in terms of computational capabilities and memory. It may not be possible to directly operate the sensor nodes with complex learning algorithms. The first strategy is the centralized learning technique, in which a coordinator can gather network statistics and alternates MAC parameters between all nodes.
+
+The other open question is stability which is to be ensured. Adaptive algorithms are not supposed to make oscillations through the constant change of parameters. Subsequently, the targeted studies in the future should be based on lightweight, stable, and energy-efficient learning-based MAC mechanisms.
+
+
+
+\subsection{Cross-Layer Optimization and Integrated Protocol Design}
+
+Conventional network design isolates layers, which include physical layer, MAC layer and network layer. Although such a modular approach can be easy to implement, it can restrict performance improvement under extreme conditions. Another key trend in the future is the cross-layer design, particularly in hard and underwater IoT.
+
+In network underwater propagation delay and channel conditions directly impact on the choice of MAC and routing. Instead of making the design of these layers separate, the information could be shared by the integrated systems. To give an example, the MAC layer might respond to physical layer detecting that extreme levels of multipath distortion have occurred by altering slot timing, or power used in transmission to a lower value.
+
+Substrate optimization can also be used to make cross-layers more efficient in energy-saving. In case routing protocols choose the long distance routes, the MAC layer might be required to schedule to support the increase in the propagation delay. Inter-layer coordination will enable the reduction in retransmission which is unnecessary, and enhance the system performance.
+
+In the industrial IoT setting, the cross-layer methods can be used to enhance interference management. In case the physical layer identifies frequency-specific noise, then the MAC layer may dynamically switch channel hopping sequences. Meanwhile, the routing algorithms can steer the traffic to non-congested areas of the network.
+
+Having said that, the cross-layer integration makes the system complex. Close design is made to avoid accidental inter-layering. Future studies should be directed to structured cross-layer structures that are both modular and able to be optimally adapted.
+
+
+\subsection{Energy Harvesting and Sustainable Communication Models}
+
+One more significant future direction is energy harvesting technologies. Underwater systems may possibly have access to ocean currents, wave motion or thermal gradients that can be used to generate energy. The additional power in industrial IoT can be offered by vibration energy or ambient light.
+
+Under the circumstances that the nodes are capable of gathering energy, the principles of MAC protocol design can alter considerably. There could also be a transmission schedule management of the schedule of transmission based on harvested energy available, rather than necessarily just reducing transmission frequency to maximize battery usage. Reporting frequency may be enhanced by the nodes in the situation where energy availability is high. Transmission might be lower in times of low energy.
+
+Energy harvesting, however, does not make it consistent. Energy collected cannot be predictable, and may vary erratically. MAC protocols should hence be made to be energy-conscious. The decisions of scheduling can be made based on the real-time energy.
+
+One of the most important issues is freedom balance and energy provision. When a few nodes generate more energy than others, they can personally take over the channel access. Designs of future MAC should also have mechanisms of ensuring fairness during utilization of renewable energy opportunities.
+
+Incorporating energy harvesting, duty cycling, and adaptive scheduling is likely to become a combination of sustainable communication models to make the most of prolonged operation of the network.
+
+
+
+\subsection{Toward Fully Adaptive and Context-Aware MAC Systems}
+
+It can be concluded that full adaptive and context-aware systems seem to be the ultimate direction of MAC protocol evolution. As an alternative to employing fixed rules, future MAC protocols can constantly observe the environmental conditions, traffic load, power status as well as the patterns of interference.
+
+Context-aware MAC systems have the potential to regulate the slot lengths in underwater settings, according to their approximations of the propagation delay and the amount of channel noise present. Under calm conditions in the environment, shorter slots can enhance throughput. In cases where there is a lot of noise, it might not be able to be in collision due to larger guard intervals.
+
+Context awareness in the case of industrial IoT can concern the identifications of operating conditions of machines. As an example of this, when a heavy motor is operating and interfering it can be of the nature that the MAC system decides to delay non important traffic, switch to different frequency channels momentarily or switch to alternative frequency channels.
+
+The adaptive MAC systems should not only be responsive but stable. Oversensitivity to adaptation can cause swings and erratic conduct. Thus, the directions of the future studies should be the optimal frequencies of adaptation and the decision threshold.
+
+
+
+The other long term objective is to create cohesive MAC structures capable of performing on multi extreme conditions with parameter control as opposed to redesigning. Such a flexibility would go a long way in enhancing deployment efficiency.
+	
+
+	\section{Conclusion}
+	The design of wireless MAC protocols in extreme scenarios poses challenges the nature of which is radically different as compared to the ones that are experienced in traditional terrestrial wireless systems. This assignment discussed two challenging areas underwater acoustic networks and harsh industrial IoT environment. In spite of the fact that both are regarded as challenging operating conditions, the constraints underlying them vary considerably and hence necessitate a special technique of design.
+
+Underwater conditions The low velocity of sound amplification is a dominant factor in the control of MAC behavior. High and variable propagation delay has impact on the carrier sensing, the handshakes, accuracy of synchronization and also general utilization of the channel. The bandwidth is also limited which further enhances the effects of control overhead and retransmissions. Energy efficiency is imposed as a constraint since in many cases the underwater sensor nodes are to be used over long periods without physical service. Consequently, MAC protocols within underwater systems should undergo proper balancing between delay awareness, scheduling and power conservation.
+
+Conversely, the most prominent constraints in harsh environments that are part of IoT include interference, congestion, and dense devices. Even though radio signals move fast, electromagnetic noise, multiple path bounces and varying patterns of interferences have serious impacts on reliability. Another timing constraint is that of the industrial systems, especially automation or even safety-critical applications. MAC protocols should therefore be able to provide predictable latency, scalability and fairness but be able to deal with the interference.
+
+In the comparative analysis, it is observed that there is no single MAC strategy that is applicable to both environments to meet the demands. Contention based protocols are flexible but cannot cope with low delay or low congestion. Scheduled and reservation-based methods enhance reliability yet make it complicated to achieve synchronization. Adaptive and hybrid mechanisms seem to be a fair trade-off, particularly in a manner that the environmental conditions vary.
+
+Moving ahead, the development of MAC protocols will perhaps be characterized by dynamic, context sensitive, possibly adaptive and learning based protocols in response to the environmental changes. Long-term efficiency and stability will be further improved with the help of cross-layer integration and energy-aware design. Since the service of wireless communication is increasingly expanding its reach to more complex environments, the design of MAC protocol has to be adaptable, energy-saving, as well as environment-focused.
+
+Finally, knowledge of the physical and operational limitations of underwater and harsh IoT system would be useful in designing efficient MAC protocols. Through the study of these restrictions and the adaptive solutions, scientists and engineers are able to come up with communication systems that can work reliably even in extreme conditions.
+
+	\bibliographystyle{plain}
+	\bibliography{references}
+    \nocite{A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15}
+	
+\end{document}
